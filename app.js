@@ -79,8 +79,27 @@ updateCounts();
 /* =========================
    COPY TEXT
 ========================= */
-copyBtn.onclick = () => {
-  navigator.clipboard.writeText(editor.innerText);
+copyBtn.onclick = async () => {
+  const html = editor.innerHTML;
+  const text = editor.innerText;
+
+  try {
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        "text/html": new Blob([html], { type: "text/html" }),
+        "text/plain": new Blob([text], { type: "text/plain" })
+      })
+    ]);
+
+    copyBtn.textContent = "Copied!";
+    setTimeout(() => (copyBtn.textContent = "Copy Text"), 1000);
+
+  } catch (err) {
+    // Fallback for insecure contexts (HTTP, localhost without SSL)
+    // or older browsers that don't support ClipboardItem
+    editor.focus();
+    document.execCommand("copy");
+  }
 };
 
 /* =========================
