@@ -211,3 +211,19 @@ body {
 .dark button {
   filter: brightness(1.15);
 }
+
+#copyHtmlBtn {
+  background: #17a2b8;   /* teal */
+  color: #fff;
+}
+
+#copySocialBtn {
+  background: #6f42c1;   /* purple */
+  color: #fff;
+}
+
+#copyHtmlBtn:hover,
+#copySocialBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
