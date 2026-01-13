@@ -1,121 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Duvofs Text Makeover — Online Text Formatter & Character Counter</title>
 
-  <title>
-    Text Formatter Online | Character Counter & Notepad – Duvofs
-  </title>
+<meta name="description" content="Format text online with bold, italic, underline, uppercase, lowercase, capitalize, and count characters & words. Copy formatted HTML or social media styled text.">
+<meta name="keywords" content="text formatter, online notepad, character counter, word counter, bold text, italic text, underline text, uppercase lowercase converter, capitalize text, social media text">
 
-  <!-- SEO META -->
-  <meta name="description" content="Free online text formatter and notepad. Count characters and words, convert uppercase to lowercase, capitalize words and sentences, and format text with bold, italic or underline." />
-  <meta name="keywords" content="text formatter, online text formatter, online notepad, character counter, word counter, capitalize text, uppercase lowercase converter, bold text online, text makeover" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#ffffff" />
-
-  <!-- SEO SCHEMA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Duvofs Text Makeover",
-    "url": "https://text.duvofs.com",
-    "applicationCategory": "ProductivityApplication",
-    "operatingSystem": "Web",
-    "description": "Free online text formatter and notepad with character counter, word counter, uppercase lowercase converter, text capitalization, and formatting tools.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Online text formatter",
-      "Character counter",
-      "Word counter",
-      "Uppercase and lowercase converter",
-      "Capitalize words and sentences",
-      "Bold, italic and underline text",
-      "Export text as DOCX or PDF"
-    ]
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Duvofs Text Makeover",
+  "url": "https://text.duvofs.com",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Web",
+  "description": "Online text formatter supporting bold, italic, underline, uppercase, lowercase, capitalization & character/word counting",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
 
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<header class="top-bar">
+<div class="top-bar">
   <button id="saveDocBtn">Save as Document</button>
   <h1>Duvofs Text Makeover</h1>
-  <div>
+  <div class="right-controls">
     <button id="darkToggle">🌙</button>
     <button id="pdfBtn">Export as PDF</button>
   </div>
-</header>
+</div>
 
 <div class="stats-bar">
-  <span>Characters: <b id="charCount">0</b></span>
-  <span>Words: <b id="wordCount">0</b></span>
+  <span>Characters: <span id="charCount">0</span></span>
+  <span>Words: <span id="wordCount">0</span></span>
 </div>
 
 <div class="layout">
+  <div class="ad-box"><span class="ad-placeholder">Advertisement</span></div>
 
-  <aside class="ad-box">
-    <div class="ad-placeholder">Advertisement</div>
-  </aside>
+  <div class="editor-wrapper">
+    <div id="editor" contenteditable="true"></div>
+  </div>
 
-  <main class="editor-wrapper">
-    <div id="editor" contenteditable="true" spellcheck="false"></div>
-  </main>
-
-  <aside class="ad-box">
-    <div class="ad-placeholder">Advertisement</div>
-  </aside>
-
+  <div class="ad-box"><span class="ad-placeholder">Advertisement</span></div>
 </div>
 
 <div class="controls">
-
   <div class="font-controls">
-  <button id="fontDown" title="Decrease font size">A−</button>
-  <span id="fontSizeLabel">14px</span>
-  <button id="fontUp" title="Increase font size">A+</button>
-</div>
+    <button id="fontDown">A−</button>
+    <span id="fontSizeLabel">14px</span>
+    <button id="fontUp">A+</button>
+  </div>
 
-<button id="copyHtmlBtn">Copy HTML</button>
-<button id="copySocialBtn">Copy Social</button>
-  
+  <button id="copyHtmlBtn" class="btn-info">Copy HTML</button>
+  <button id="copySocialBtn" class="btn-purple">Copy Social</button>
+  <button id="copyBtn" class="btn-dark">Copy Text</button>
+
   <div class="group">
-    <button id="boldBtn">B</button>
-    <button id="italicBtn">I</button>
-    <button id="underlineBtn">U</button>
-    <button id="resetFormatBtn">✕</button>
+    <button id="boldBtn" class="btn-blue">B</button>
+    <button id="italicBtn" class="btn-indigo">I</button>
+    <button id="underlineBtn" class="btn-green">U</button>
+    <button id="resetFormatBtn" class="btn-red">✕</button>
   </div>
 
   <div class="group">
-    <button id="upperBtn">UPPERCASE</button>
-    <button id="lowerBtn">lowercase</button>
-    <button id="capWordsBtn">Capitalize Words</button>
-    <button id="capSentenceBtn">Capitalize Sentences</button>
+    <button id="upperBtn" class="btn-orange">UPPERCASE</button>
+    <button id="lowerBtn" class="btn-cyan">lowercase</button>
+    <button id="capWordsBtn" class="btn-teal">Capitalize Words</button>
+    <button id="capSentBtn" class="btn-purple">Capitalize Sentences</button>
   </div>
-
 </div>
 
-<!-- Optional visible SEO text -->
-<p class="seo-text">
-  Duvofs Text Makeover is a free online text formatter and notepad.
-  Easily count characters and words, format text, convert uppercase and lowercase,
-  capitalize sentences, and export formatted text as DOCX or PDF.
-</p>
-
-<!-- LIBRARIES -->
-<script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="app.js"></script>
+<script src="html-docx.js"></script>
+<script src="jspdf.umd.min.js"></script>
 
 </body>
 </html>
